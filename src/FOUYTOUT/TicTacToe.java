@@ -29,8 +29,8 @@ public class TicTacToe {
     }
 
     public void initPlayers() {
-        player1 = new Player(" X ");
-        player2 = new Player(" O ");
+        player1 = new Player("X");
+        player2 = new Player("O");
     }
 
     public void play() {
