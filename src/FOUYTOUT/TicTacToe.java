@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 public class TicTacToe {
-    private final int size = 3;
+    private final int size = 5;
     private Cell[][] board;
     private Player player1;
     private Player player2;
@@ -15,7 +15,7 @@ public class TicTacToe {
 
     public TicTacToe() {
         initBoard();
-        initPlayers(new HumanPlayer(State.X), new HumanPlayer(State.O));
+        initPlayers(new HumanPlayer(State.X), new HumanPlayer(State.X));
     }
 
     public TicTacToe(Player p1, Player p2) {
@@ -43,58 +43,22 @@ public class TicTacToe {
         while (play) {
             display();
             for (int i = 0; i < (size * size); i++) {
-                //TODO refac doublon
-                if (i % 2 == 0) {
-                    setOwner(getMoveFromPlayer(), player1);
-                    if (isOver(player1)) {
-                        play = false;
-                        display();
-                        break;
-                    }
-                } else {
-                    setOwner(getMoveFromPlayer(), player2);
-                    if (isOver(player2)) {
-                        play = false;
-                        display();
-                        break;
-                    }
-                }display();
+                //switch player
+                Player currentPlayer = (i % 2 == 0) ? player1 : player2;
+
+                int[] move = currentPlayer.makeMove(board);
+                setOwner(move, currentPlayer);
+
+                if (isOver(currentPlayer)) {
+                    play = false;
+                    display();
+                    break;
+                }
+                display();
             }
         }
         view.gameOver();
     }
-
-    public int[] getMoveFromPlayer() {
-        //TODO move to userInterface
-        Scanner userInput = new Scanner(System.in);
-        int[] positionPlayer = new int[2];
-        int rowPos = -1;
-        int colPos = -1;
-        //TODO secure bad input
-        do {
-            view.askPosRow();
-            //TODO move to userInterface
-            rowPos = Integer.parseInt(userInput.nextLine());
-        } while (rowPos < 0 || rowPos >= size);
-        do {
-            view.askPosCol();
-            //TODO move to userInterface
-            colPos = Integer.parseInt(userInput.nextLine());
-        } while (colPos < 0 || colPos >= size);
-        positionPlayer[0] = rowPos;
-        positionPlayer[1] = colPos;
-        if (board[rowPos][colPos].getState() != State.EMPTY) {
-            view.cellIsNotFree();
-            return getMoveFromPlayer();
-        }
-        return positionPlayer;
-    }
-
-
-
-
-
-
 
     //TODO remonter la bouble des sous méthodes
     public boolean isOver(Player player) {
@@ -105,6 +69,7 @@ public class TicTacToe {
         }
         return false;
     }
+
     //TODO faire que fonction check col//row
     public boolean oneColCheck(Player player, int col) {
         for (int i = 0; i < size; i++) {
