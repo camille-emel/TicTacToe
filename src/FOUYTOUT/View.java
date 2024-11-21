@@ -27,4 +27,7 @@ public class View {
     public void jumpLineFormat() {
         System.out.println();
     }
+    public void jumpLineFormat2() {
+        System.out.println();
+    }
 }
