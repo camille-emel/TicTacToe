@@ -15,7 +15,12 @@ public class TicTacToe {
 
     public TicTacToe() {
         initBoard();
-        initPlayers();
+        initPlayers(new HumanPlayer(State.X), new HumanPlayer(State.O));
+    }
+
+    public TicTacToe(Player p1, Player p2) {
+        initBoard();
+        initPlayers(p1, p2);
     }
 
     public void initBoard() {
@@ -28,9 +33,9 @@ public class TicTacToe {
         }
     }
 
-    public void initPlayers() {
-        player1 = new Player(State.X);
-        player2 = new Player(State.O);
+    public void initPlayers(Player p1, Player p2) {
+        player1 = p1;
+        player2 = p2;
     }
 
     public void play() {
@@ -84,6 +89,13 @@ public class TicTacToe {
         }
         return positionPlayer;
     }
+
+
+
+
+
+
+
     //TODO remonter la bouble des sous méthodes
     public boolean isOver(Player player) {
         for (int i = 0; i < size; i++) {

@@ -1,8 +1,10 @@
 package FOUYTOUT;
 
-public  class Player {
+public abstract class Player {
     State state;
 
+    public Player() {
+    }
 
     Player(State state) {
         this.state = state;
@@ -23,8 +25,7 @@ public  class Player {
     }
 
 
-    public void makeMove() {
-
-    }
+    // Méthode abstraite qui sera implémentée par les sous-classes
+    public abstract int[] makeMove(Cell[][] board);
 
 }
