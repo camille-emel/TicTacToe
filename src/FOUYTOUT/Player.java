@@ -1,18 +1,28 @@
 package FOUYTOUT;
 
 public  class Player {
-    private String representation;
+    State state;
 
 
-    public Player(String representation) {
-
-        this.representation = representation;
+    Player(State state) {
+        this.state = state;
     }
 
-    public String getRepresentation() {
+    String getRepresentation() {
 
-        return representation;
+        return state.getValue();
     }
+
+    State getState() {
+        return state;
+    }
+
+    @Override
+    public String toString() {
+        return getRepresentation();
+    }
+
+
     public void makeMove() {
 
     }

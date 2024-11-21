@@ -29,8 +29,8 @@ public class TicTacToe {
     }
 
     public void initPlayers() {
-        player1 = new Player("X");
-        player2 = new Player("O");
+        player1 = new Player(State.X);
+        player2 = new Player(State.O);
     }
 
     public void play() {
@@ -78,7 +78,7 @@ public class TicTacToe {
         } while (colPos < 0 || colPos >= size);
         positionPlayer[0] = rowPos;
         positionPlayer[1] = colPos;
-        if (!board[rowPos][colPos].isEmpty()) {
+        if (board[rowPos][colPos].getState() != State.EMPTY) {
             view.cellIsNotFree();
             return getMoveFromPlayer();
         }
@@ -96,7 +96,7 @@ public class TicTacToe {
     //TODO faire que fonction check col//row
     public boolean oneColCheck(Player player, int col) {
         for (int i = 0; i < size; i++) {
-            if (!Objects.equals(board[i][col].getRepresentation(), player.getRepresentation())) {
+            if (board[i][col].getState() != player.getState()) {
                 return false;
             }
         }
@@ -105,7 +105,7 @@ public class TicTacToe {
 
     public boolean oneRowCheck(Player player, int row) {
         for (int i = 0; i < size; i++) {
-            if (!Objects.equals(board[row][i].getRepresentation(), player.getRepresentation())) {
+            if (board[row][i].getState() != player.getState()) {
                 return false;
             }
         }
@@ -114,7 +114,7 @@ public class TicTacToe {
 
     public boolean oneDiagDownCheck(Player player) {
         for (int i = 0; i < size; i++) {
-            if (!Objects.equals(board[i][i].getRepresentation(), player.getRepresentation())) {
+            if (board[i][i].getState() != player.getState()) {
                 return false;
             }
         }
@@ -123,7 +123,7 @@ public class TicTacToe {
 
     public boolean oneDiagUpCheck(Player player) {
         for (int i = 0; i < size; i++) {
-            if (!Objects.equals(board[size - i - 1][i].getRepresentation(), player.getRepresentation())) {
+            if (board[size - i - 1][i].getState() !=  player.getState()) {
                 return false;
             }
         }
@@ -143,6 +143,6 @@ public class TicTacToe {
     }
 
     public void setOwner(int[] positionPlayer, Player player) {
-        board[positionPlayer[0]][positionPlayer[1]].setRepresentation(player.getRepresentation());
+        board[positionPlayer[0]][positionPlayer[1]].setState(player.getState());
     }
 }
