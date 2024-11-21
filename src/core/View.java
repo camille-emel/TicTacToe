@@ -1,4 +1,4 @@
-package FOUYTOUT;
+package core;
 
 public class View {
     public View() {

@@ -1,4 +1,6 @@
-package FOUYTOUT;
+package games;
+
+import core.State;
 
 public class Cell {
     State state;
@@ -12,7 +14,7 @@ public class Cell {
     public String getRepresentation(){
         return this.state.getValue();
     }
-    State getState(){
+    public State getState(){
         return this.state;
     }
     public String toString(){

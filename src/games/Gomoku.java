@@ -1,4 +1,4 @@
-package FOUYTOUT;
+package games;
 
 public class Gomoku {
 }

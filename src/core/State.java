@@ -1,4 +1,4 @@
-package FOUYTOUT;
+package core;
 
 public enum State {
     EMPTY("   "),

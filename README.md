@@ -1,1 +1,1 @@
-# FOUYTOUT.TicTacToe
+# games.TicTacToe

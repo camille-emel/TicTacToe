@@ -1,6 +1,4 @@
-package FOUYTOUT;
-
-import java.util.Scanner;
+package core;
 
 public class UserInteraction {
     public UserInteraction() {

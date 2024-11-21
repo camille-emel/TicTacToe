@@ -1,7 +1,10 @@
-package FOUYTOUT;
+package games;
 
-import java.util.Objects;
-import java.util.Scanner;
+import core.State;
+import core.UserInteraction;
+import core.View;
+import players.HumanPlayer;
+import players.Player;
 
 
 public class TicTacToe {

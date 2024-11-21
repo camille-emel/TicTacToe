@@ -1,4 +1,7 @@
-package FOUYTOUT;
+package players;
+
+import games.Cell;
+import core.State;
 
 public abstract class Player {
     State state;
@@ -15,7 +18,7 @@ public abstract class Player {
         return state.getValue();
     }
 
-    State getState() {
+    public State getState() {
         return state;
     }
 

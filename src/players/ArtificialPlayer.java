@@ -1,4 +1,7 @@
-package FOUYTOUT;
+package players;
+
+import games.Cell;
+import core.State;
 
 import java.util.Random;
 

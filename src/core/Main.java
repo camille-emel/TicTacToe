@@ -1,4 +1,6 @@
-package FOUYTOUT;
+package core;
+
+import games.TicTacToe;
 
 public class Main {
     public static void main(String[] args) {
