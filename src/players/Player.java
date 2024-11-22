@@ -1,7 +1,7 @@
 package players;
 
 import games.Cell;
-import core.State;
+import display.State;
 
 public abstract class Player {
     State state;

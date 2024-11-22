@@ -1,8 +1,8 @@
 package players;
 
 import games.Cell;
-import core.State;
-import core.View;
+import display.State;
+import display.View;
 
 import java.util.Scanner;
 

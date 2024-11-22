@@ -1,4 +1,4 @@
-package core;
+package display;
 
 public enum State {
     EMPTY("   "),

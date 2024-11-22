@@ -1,6 +1,6 @@
 package games;
 
-import core.State;
+import display.State;
 
 public class Cell {
     State state;
