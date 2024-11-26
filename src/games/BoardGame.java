@@ -5,8 +5,8 @@ import display.View;
 import players.Player;
 
 public abstract class BoardGame {
-    private int nbLine=4;
-    private int nbCol=3;
+    private int nbLine;
+    private int nbCol;
     private Cell[][] board;
     private Player player1;
     private Player player2;

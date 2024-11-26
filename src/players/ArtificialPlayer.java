@@ -8,13 +8,11 @@ import java.util.Random;
 public class ArtificialPlayer extends Player {
     private Random random;
 
-    // Constructeur sans paramètre
     public ArtificialPlayer() {
         super();
         this.random = new Random();
     }
 
-    // Constructeur avec state
     public ArtificialPlayer(State state) {
         super(state);
         this.random = new Random();
