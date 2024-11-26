@@ -23,8 +23,9 @@ public class Menu {
                 TicTacToe ticTacToe = new  TicTacToe();
                 String player1 = askHumanPlayerOrComputer();
                 String player2 = askHumanPlayerOrComputer();
-                if (Objects.equals(player2, "1"))
-                ticTacToe.play();
+                if (Objects.equals(player1, "1") && Objects.equals(player2, "1")) {
+                    ticTacToe.play();
+                }
                 break;
             case 2:
                 Connect4 connect4 = new Connect4();
