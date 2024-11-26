@@ -10,6 +10,7 @@ public abstract class BoardGame {
     private Player player1;
     private Player player2;
     private DisplayBoard displayBoard;
+    private int align;
 
     public void setNbLine(int nbLine) {
         this.nbLine = nbLine;
@@ -18,13 +19,19 @@ public abstract class BoardGame {
     public void setNbCol(int nbCol) {
         this.nbCol = nbCol;
     }
+    public void setAlign(int align) {
+        this.align = align;
+    }
 
     public void initPlayers(Player p1, Player p2) {
         player1 = p1;
         player2 = p2;
     }
 
-    public void initBoard() {
+    public void initBoard(int row, int col, int align) {
+        setNbCol(col);
+        setNbLine(row);
+        setAlign(align);
         board = new Cell[nbLine][nbCol];
         for (int i = 0; i < nbLine; i++) {
             for (int j = 0; j < nbCol; j++) {
@@ -73,15 +80,15 @@ public abstract class BoardGame {
     //Conditions de victoire
     public boolean isOver(Player player) {
         for (int i = 0; i < nbLine; i++) {
-            if (oneRowCheck(player, i, 2)) {
+            if (oneRowCheck(player, i, align)) {
                 return true;
             }
         }
         for (int i = 0; i < nbCol; i++) {
-            if (oneColCheck(player, i, 2)) {
+            if (oneColCheck(player, i, align)) {
                 return true;
             }
-        }if (oneDiagDownCheck(player, 2) || oneDiagUpCheck(player, 2)){
+        }if (oneDiagDownCheck(player, align) || oneDiagUpCheck(player, align)){
             return true;
         }
         return false;
@@ -146,4 +153,30 @@ public abstract class BoardGame {
         }
         return false;
     }
+    //Solution formateur
+    /*public boolean isOver() {
+        State currentState = currentPlayer.getState();
+
+        for (int i = 0; i < sizeLine; i++) {
+            for(int j = 0; j < sizeColumn; j++) {
+                if (checkDirection(i, j, 0, 1,currentState)
+                    || checkDirection(i, j, 1, 0,currentState)
+                    || checkDirection(i, j, 1, 1,currentState)
+                    || checkDirection(i, j, 1, -1,currentState)) return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkDirection(int i, int j, int u, int v, State currentState){
+        for (int k = 0; k < nbIdenticalCell; k++) {
+            if (!exist(i+u*k, j + v*k)){
+                return false;
+            }
+            if (board[i+u*k][j + v*k].getState() != currentState) {
+                return false;
+            }
+        }
+        return true;
+    }*/
 }

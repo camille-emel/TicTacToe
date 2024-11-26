@@ -20,31 +20,44 @@ public class HumanPlayer extends Player {
 
     @Override
     public int[] makeMove(Cell[][] board) {
-
         View view = new View();
         Scanner userInput = new Scanner(System.in);
 
         int[] positionPlayer = new int[2];
         int rowPos = -1;
         int colPos = -1;
-        //TODO secure bad input
+
         do {
-            view.askPosRow();
-//            if (userInput.nextLine() != char && Number)
-            //TODO move to userInterface
-            rowPos = Integer.parseInt(userInput.nextLine());
-        } while (rowPos < 0 || rowPos >= 5);
+            try {
+                view.askPosRow();
+                rowPos = Integer.parseInt(userInput.nextLine());
+                if (rowPos < 0 || rowPos >= board.length) {
+                    view.wrongInput();
+                }
+            } catch (NumberFormatException e) {
+                view.wrongInput();
+            }
+        } while (rowPos < 0 || rowPos >= board.length);
         do {
-            view.askPosCol();
-            //TODO move to userInterface
-            colPos = Integer.parseInt(userInput.nextLine());
-        } while (colPos < 0 || colPos >= 5);
-        positionPlayer[0] = rowPos;
-        positionPlayer[1] = colPos;
+            try {
+                view.askPosCol();
+                colPos = Integer.parseInt(userInput.nextLine());
+                if (colPos < 0 || colPos >= board[0].length) {
+                    view.wrongInput();
+                }
+            } catch (NumberFormatException e) {
+                view.wrongInput();
+            }
+        } while (colPos < 0 || colPos >= board[0].length);
+
         if (board[rowPos][colPos].getState() != State.EMPTY) {
             view.cellIsNotFree();
             return makeMove(board);
         }
+
+        positionPlayer[0] = rowPos;
+        positionPlayer[1] = colPos;
+
         return positionPlayer;
     }
 }

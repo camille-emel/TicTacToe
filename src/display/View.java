@@ -27,4 +27,7 @@ public class View {
     public void jumpLineFormat() {
         System.out.println();
     }
+    public void wrongInput() {
+        System.out.println("Wrong input.");
+    }
 }
