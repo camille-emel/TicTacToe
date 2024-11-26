@@ -3,35 +3,22 @@ package display;
 import games.Cell;
 
 public class DisplayBoard {
-
-    private Cell cell;
-    private Cell[][] board;
     private int nbRow;
     private int nbCol;
     private View view;
 
     public DisplayBoard(int nbRows, int nbCols) {
-        this.board = new Cell[nbRows][nbCols];
         this.nbRow = nbRows;
         this.nbCol = nbCols;
-
+        this.view = new View();
     }
 
-    public DisplayBoard() {
-
-    }
-
-    public void initBoard() {
-        board = new Cell[nbRow][nbCol];
-        view = new View();
-        for (int i = 0; i < nbRow; i++) {
-            for (int j = 0; j < nbCol; j++) {
-                board[i][j] = new Cell();
-            }
+    public void display(Cell[][] board) {
+        if (board == null) {
+            System.out.println("Erreur : le tableau est null !");
+            return;
         }
-    }
 
-    public void display() {
         for (int i = 0; i < nbRow; i++) {
             for (int j = 0; j < nbCol; j++) {
                 System.out.print(board[i][j].getRepresentation());

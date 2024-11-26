@@ -1,7 +1,6 @@
 package games;
 
-import display.UserInteraction;
-import display.View;
+import display.DisplayBoard;
 import players.Player;
 
 public abstract class BoardGame {
@@ -10,8 +9,7 @@ public abstract class BoardGame {
     private Cell[][] board;
     private Player player1;
     private Player player2;
-    private View view;
-    private UserInteraction userInteraction;
+    private DisplayBoard displayBoard;
 
     public void setNbLine(int nbLine) {
         this.nbLine = nbLine;
@@ -21,7 +19,6 @@ public abstract class BoardGame {
         this.nbCol = nbCol;
     }
 
-
     public void initPlayers(Player p1, Player p2) {
         player1 = p1;
         player2 = p2;
@@ -29,24 +26,18 @@ public abstract class BoardGame {
 
     public void initBoard() {
         board = new Cell[nbLine][nbCol];
-        view = new View();
         for (int i = 0; i < nbLine; i++) {
             for (int j = 0; j < nbCol; j++) {
                 board[i][j] = new Cell();
             }
         }
+        displayBoard = new DisplayBoard(nbLine, nbCol);
     }
 
+
+
     public void display() {
-        for (int i = 0; i < nbLine; i++) {
-            for (int j = 0; j < nbCol; j++) {
-                System.out.print(board[i][j].getRepresentation());
-                if (j < nbCol - 1) {
-                    view.cellSeparator();
-                }
-            }
-            view.jumpLineFormat();
-        }
+        displayBoard.display(board);
     }
 
     public void setOwner(int[] positionPlayer, Player player) {
@@ -55,25 +46,29 @@ public abstract class BoardGame {
 
     public void play() {
         boolean play = true;
+
         while (play) {
-            display();
+            displayBoard.display(board);
+
             for (int i = 0; i < (nbLine * nbCol); i++) {
-                //switch player
                 Player currentPlayer = (i % 2 == 0) ? player1 : player2;
 
                 int[] move = currentPlayer.makeMove(board);
+
                 setOwner(move, currentPlayer);
 
                 if (isOver(currentPlayer)) {
                     play = false;
-                    display();
+                    displayBoard.display(board);
                     break;
                 }
-                display();
+
+                displayBoard.display(board);
             }
         }
-        view.gameOver();
     }
+
+
 
     //Conditions de victoire
     public boolean isOver(Player player) {

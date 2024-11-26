@@ -3,7 +3,7 @@ package display;
 import java.util.Scanner;
 
 public class Menu {
-    Menu(){
+    public Menu(){
 
     }
     public String askWhatToPlay(){
