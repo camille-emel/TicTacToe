@@ -14,6 +14,7 @@ public class DisplayBoard {
     }
 
     public void display(Cell[][] board) {
+        System.out.println("Current board: : ");
         for (int i = 0; i < nbRow; i++) {
             for (int j = 0; j < nbCol; j++) {
                 System.out.print(board[i][j].getRepresentation());
@@ -23,6 +24,5 @@ public class DisplayBoard {
             }
             view.jumpLineFormat();
         }
-        System.out.println("Next turn : ");
     }
 }

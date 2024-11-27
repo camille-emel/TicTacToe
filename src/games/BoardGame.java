@@ -73,14 +73,40 @@ public abstract class BoardGame {
                 displayBoard.display(board);
             }
         }
+        System.out.println("Game over");
     }
 
 
+    //Solution formateur
+    /*public boolean isOver() {
+        State currentState = currentPlayer.getState();
 
+        for (int i = 0; i < sizeLine; i++) {
+            for(int j = 0; j < sizeColumn; j++) {
+                if (checkDirection(i, j, 0, 1,currentState)
+                    || checkDirection(i, j, 1, 0,currentState)
+                    || checkDirection(i, j, 1, 1,currentState)
+                    || checkDirection(i, j, 1, -1,currentState)) return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkDirection(int i, int j, int u, int v, State currentState){
+        for (int k = 0; k < nbIdenticalCell; k++) {
+            if (!exist(i+u*k, j + v*k)){
+                return false;
+            }
+            if (board[i+u*k][j + v*k].getState() != currentState) {
+                return false;
+            }
+        }
+        return true;
+    }*/
     //Conditions de victoire
     public boolean isOver(Player player) {
         for (int i = 0; i < nbLine; i++) {
-            if (oneRowCheck(player, i, align)) {
+            if (oneRowCheck(player, i, align) ||oneDiagDownCheck(player,i ,align) || oneDiagUpCheck(player, i, align)) {
                 return true;
             }
         }
@@ -88,8 +114,6 @@ public abstract class BoardGame {
             if (oneColCheck(player, i, align)) {
                 return true;
             }
-        }if (oneDiagDownCheck(player, align) || oneDiagUpCheck(player, align)){
-            return true;
         }
         return false;
     }
@@ -124,10 +148,10 @@ public abstract class BoardGame {
         return false;
     }
 
-    public boolean oneDiagDownCheck(Player player, int alignToWin) {
+    public boolean oneDiagDownCheck(Player player, int row, int alignToWin) {
         int count = 0;
         for (int j = 0; j < nbCol; j++) {
-            if (board[j][j].getState() == player.getState()) {
+            if (board[row][j].getState() == player.getState()) {
                 count++;
                 if (count == alignToWin) {
                     return true;
@@ -139,10 +163,10 @@ public abstract class BoardGame {
         return false;
     }
 
-    public boolean oneDiagUpCheck(Player player, int alignToWin) {
+    public boolean oneDiagUpCheck(Player player, int row, int alignToWin) {
         int count = 0;
         for (int j = 0; j < nbCol; j++) {
-            if (board[j][nbCol - j - 1].getState() == player.getState()) {
+            if (board[row][nbCol - j - 1].getState() == player.getState()) {
                 count++;
                 if (count == alignToWin) {
                     return true;
@@ -153,30 +177,5 @@ public abstract class BoardGame {
         }
         return false;
     }
-    //Solution formateur
-    /*public boolean isOver() {
-        State currentState = currentPlayer.getState();
 
-        for (int i = 0; i < sizeLine; i++) {
-            for(int j = 0; j < sizeColumn; j++) {
-                if (checkDirection(i, j, 0, 1,currentState)
-                    || checkDirection(i, j, 1, 0,currentState)
-                    || checkDirection(i, j, 1, 1,currentState)
-                    || checkDirection(i, j, 1, -1,currentState)) return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkDirection(int i, int j, int u, int v, State currentState){
-        for (int k = 0; k < nbIdenticalCell; k++) {
-            if (!exist(i+u*k, j + v*k)){
-                return false;
-            }
-            if (board[i+u*k][j + v*k].getState() != currentState) {
-                return false;
-            }
-        }
-        return true;
-    }*/
 }
