@@ -1,9 +1,5 @@
 package games;
 
-import display.State;
-import players.HumanPlayer;
-import players.Player;
-
 
 public class TicTacToe extends BoardGame {
 
