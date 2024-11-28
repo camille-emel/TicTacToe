@@ -4,9 +4,9 @@ import model.BoardGame;
 import model.Connect4;
 import model.Gomoku;
 import model.TicTacToe;
-import model.ArtificialPlayer;
-import model.HumanPlayer;
-import model.Player;
+import controller.ArtificialPlayer;
+import controller.HumanPlayer;
+import controller.Player;
 
 import java.util.Scanner;
 
@@ -18,10 +18,8 @@ public class Menu {
     }
 
     public void askWhatToPlay() {
-        System.out.println("Choose a game to play:\n" +
-                "1: TicTacToe\n" +
-                "2: Connect 4\n" +
-                "3: Gomoku");
+        View view = new View();
+        view.aksGame();
 
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline character
@@ -31,7 +29,7 @@ public class Menu {
             case 2 -> new Connect4();
             case 3 -> new Gomoku();
             default -> {
-                System.out.println("Invalid choice! Please select a valid option.");
+                view.wrongInput();
                 yield null;
             }
         };

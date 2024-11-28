@@ -1,6 +1,8 @@
 package model;
 
+import controller.Player;
 import view.DisplayBoard;
+import view.View;
 
 public abstract class BoardGame {
     private int nbLine;
@@ -10,6 +12,7 @@ public abstract class BoardGame {
     private Player player2;
     private DisplayBoard displayBoard;
     private int align;
+    private View view;
 
     public void setNbLine(int nbLine) {
         this.nbLine = nbLine;
@@ -28,6 +31,7 @@ public abstract class BoardGame {
     }
 
     public void initBoard(int row, int col, int align) {
+        this.view = new View();
         setNbCol(col);
         setNbLine(row);
         setAlign(align);
@@ -72,7 +76,7 @@ public abstract class BoardGame {
                 displayBoard.display(board);
             }
         }
-        System.out.println("Game over");
+        view.gameOver();
     }
 
 

@@ -30,4 +30,16 @@ public class View {
     public void wrongInput() {
         System.out.println("Wrong input.");
     }
+    public void currentBoard() {
+        System.out.println("Current board: : ");
+    }
+    public void aksGame(){
+        System.out.println("Choose a game to play:\n" +
+                "1: TicTacToe\n" +
+                "2: Connect 4\n" +
+                "3: Gomoku");
+    }
+
+
+
 }

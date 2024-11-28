@@ -1,5 +1,6 @@
-package model;
+package controller;
 
+import model.Cell;
 import view.State;
 
 import java.util.Random;

@@ -1,5 +1,6 @@
-package model;
+package controller;
 
+import model.Cell;
 import view.State;
 
 public abstract class Player {
