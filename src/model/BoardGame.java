@@ -1,7 +1,6 @@
-package games;
+package model;
 
-import display.DisplayBoard;
-import players.Player;
+import view.DisplayBoard;
 
 public abstract class BoardGame {
     private int nbLine;

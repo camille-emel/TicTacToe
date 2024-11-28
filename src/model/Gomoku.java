@@ -1,8 +1,6 @@
-package games;
+package model;
 
-import display.State;
-import players.HumanPlayer;
-import players.Player;
+import view.State;
 
 public class Gomoku extends BoardGame {
     public Gomoku() {

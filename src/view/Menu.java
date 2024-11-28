@@ -1,12 +1,12 @@
-package display;
+package view;
 
-import games.BoardGame;
-import games.Connect4;
-import games.Gomoku;
-import games.TicTacToe;
-import players.ArtificialPlayer;
-import players.HumanPlayer;
-import players.Player;
+import model.BoardGame;
+import model.Connect4;
+import model.Gomoku;
+import model.TicTacToe;
+import model.ArtificialPlayer;
+import model.HumanPlayer;
+import model.Player;
 
 import java.util.Scanner;
 

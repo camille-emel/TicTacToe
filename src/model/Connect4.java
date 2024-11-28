@@ -1,4 +1,4 @@
-package games;
+package model;
 
 public class Connect4 extends BoardGame {
     public Connect4() {

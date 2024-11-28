@@ -1,7 +1,6 @@
-package players;
+package model;
 
-import games.Cell;
-import display.State;
+import view.State;
 
 import java.util.Random;
 

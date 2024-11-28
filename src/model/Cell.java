@@ -1,6 +1,6 @@
-package games;
+package model;
 
-import display.State;
+import view.State;
 
 public class Cell {
     State state;

@@ -1,4 +1,4 @@
-package games;
+package model;
 
 
 public class TicTacToe extends BoardGame {

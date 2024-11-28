@@ -1,6 +1,6 @@
-package display;
+package view;
 
-import games.Cell;
+import model.Cell;
 
 public class DisplayBoard {
     private int nbRow;
