@@ -1,19 +1,15 @@
-package view;
+package controller;
 
-import model.BoardGame;
-import model.Connect4;
-import model.Gomoku;
-import model.TicTacToe;
-import controller.ArtificialPlayer;
-import controller.HumanPlayer;
-import controller.Player;
+import model.*;
+import view.State;
+import view.View;
 
 import java.util.Scanner;
 
-public class Menu {
+public class Menu2 {
     private final Scanner scanner;
 
-    public Menu() {
+    public Menu2() {
         this.scanner = new Scanner(System.in);
     }
 

@@ -1,6 +1,5 @@
 package model;
 
-import controller.Player;
 import view.DisplayBoard;
 import view.View;
 
