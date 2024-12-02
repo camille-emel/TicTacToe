@@ -1,7 +1,5 @@
 package model;
 
-import view.State;
-
 public abstract class Player {
     State state;
 

@@ -45,14 +45,14 @@ public abstract class BoardGame {
 
 
 
-    public void display() {
+    public void displayBoard() {
         displayBoard.display(board);
     }
 
     public void setOwner(int[] positionPlayer, Player player) {
         board[positionPlayer[0]][positionPlayer[1]].setState(player.getState());
     }
-
+    //TODO remonter ds controller
     public void play() {
         boolean play = true;
 

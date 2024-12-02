@@ -1,6 +1,5 @@
 package model;
 
-import view.State;
 import view.View;
 
 import java.util.Scanner;

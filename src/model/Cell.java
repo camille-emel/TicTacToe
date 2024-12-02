@@ -1,7 +1,5 @@
 package model;
 
-import view.State;
-
 public class Cell {
     State state;
 

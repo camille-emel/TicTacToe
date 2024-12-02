@@ -39,6 +39,15 @@ public class View {
                 "2: Connect 4\n" +
                 "3: Gomoku");
     }
+    public void playerOne(){
+        System.out.println("Player 1");
+    }
+    public void playerTwo(){
+        System.out.println("Player 2");
+    }
+    public void getPlayerType(String playerName){
+        System.out.println(playerName + ": Is this player a (1) Human or (2) Computer?");
+    }
 
 
 

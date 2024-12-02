@@ -1,7 +1,5 @@
 package model;
 
-import view.State;
-
 import java.util.Random;
 
 public class ArtificialPlayer extends Player {
