@@ -1,6 +1,6 @@
 package model;
 
-import view.DisplayBoard;
+//import view.DisplayBoard;
 
 public abstract class BoardGame {
     private int nbLine;
@@ -8,7 +8,7 @@ public abstract class BoardGame {
     private Cell[][] board;
     private Player player1;
     private Player player2;
-    private DisplayBoard displayBoard;
+//    private DisplayBoard displayBoard;
     private int align;
 
     public void setNbLine(int nbLine) {
@@ -37,14 +37,14 @@ public abstract class BoardGame {
                 board[i][j] = new Cell();
             }
         }
-        displayBoard = new DisplayBoard(nbLine, nbCol);
+//        displayBoard = new DisplayBoard(nbLine, nbCol);
     }
 
 
 
-    public void displayBoard() {
-        displayBoard.display(board);
-    }
+//    public void displayBoard() {
+//        displayBoard.display(board);
+//    }
 
     public void setOwner(int[] positionPlayer, Player player) {
         board[positionPlayer[0]][positionPlayer[1]].setState(player.getState());
@@ -145,5 +145,15 @@ public abstract class BoardGame {
 
     public Cell[][] getBoard() {
         return board;
+    }
+
+    public String[][] getStringBoard(){
+        String[][] stringBoard = new String[nbLine][nbCol];
+        for (int i = 0; i < nbLine; i++) {
+            for (int j = 0; j < nbCol; j++) {
+                stringBoard[i][j] = board[i][j].getRepresentation();
+            }
+        }
+        return stringBoard;
     }
 }

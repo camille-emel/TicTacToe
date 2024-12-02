@@ -4,7 +4,8 @@ import model.Cell;
 import model.Player;
 
 public interface View {
-    void displayBoard(Cell[][] board);
+    //void displayBoard(Cell[][] board);
+    void displayBoard(String[][] board);
     void showGameOver();
     void askPosRow();
     void askPosCol();

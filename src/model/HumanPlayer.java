@@ -1,26 +1,22 @@
 package model;
 
 import java.util.Scanner;
-import view.ConsoleView;
 import view.View;
 
 
 
 public class HumanPlayer extends Player {
+    private final View view;
+    private final Scanner scanner;
 
-    public HumanPlayer() {
-        super();
-    }
-
-    public HumanPlayer(State state) {
+    public HumanPlayer(State state, View view) {
         super(state);
+        this.view = view;
+        this.scanner = new Scanner(System.in);
     }
 
     @Override
     public int[] makeMove(Cell[][] board) {
-        View view = new ConsoleView();
-        Scanner userInput = new Scanner(System.in);
-
         int[] positionPlayer = new int[2];
         int rowPos = -1;
         int colPos = -1;
@@ -28,7 +24,7 @@ public class HumanPlayer extends Player {
         do {
             try {
                 view.askPosRow();
-                rowPos = Integer.parseInt(userInput.nextLine());
+                rowPos = Integer.parseInt(scanner.nextLine());
                 if (rowPos < 0 || rowPos >= board.length) {
                     view.wrongInput();
                 }
@@ -39,7 +35,7 @@ public class HumanPlayer extends Player {
         do {
             try {
                 view.askPosCol();
-                colPos = Integer.parseInt(userInput.nextLine());
+                colPos = Integer.parseInt(scanner.nextLine());
                 if (colPos < 0 || colPos >= board[0].length) {
                     view.wrongInput();
                 }

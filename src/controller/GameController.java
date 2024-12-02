@@ -17,37 +17,28 @@ public class GameController {
     public void play() {
         boolean play = true;
         int maxMoves = game.getNbLine() * game.getNbCol();
+        int moveCount = 0;
 
-        while (play) {
-            view.displayBoard(game.getBoard());
-
-            for (int i = 0; i < maxMoves; i++) {
-                // Déterminer le joueur courant
-                currentPlayer = (i % 2 == 0) ? game.getPlayer1() : game.getPlayer2();
-
-                // Obtenir le coup du joueur
-                int[] move = currentPlayer.makeMove(game.getBoard());
-
-                // Appliquer le coup
-                game.setOwner(move, currentPlayer);
-
-                // Vérifier si le jeu est terminé
-                if (game.isOver(currentPlayer)) {
-                    play = false;
-                    view.displayBoard(game.getBoard());
-                    view.announceWinner(currentPlayer);
-                    break;
-                }
-
-                // Si on arrive au dernier coup sans gagnant
-                if (i == maxMoves - 1) {
-                    play = false;
-                    view.displayBoard(game.getBoard());
-                    view.announceDraw();
-                }
-
-                view.displayBoard(game.getBoard());
+        while (play && moveCount < maxMoves) {
+            view.currentBoard();
+            view.displayBoard(game.getStringBoard());
+            
+            currentPlayer = (moveCount % 2 == 0) ? game.getPlayer1() : game.getPlayer2();
+            
+            int[] move = currentPlayer.makeMove(game.getBoard());
+            game.setOwner(move, currentPlayer);
+            
+            if (game.isOver(currentPlayer)) {
+                view.displayBoard(game.getStringBoard());
+                view.announceWinner(currentPlayer);
+                play = false;
+            } else if (moveCount == maxMoves - 1) {
+                view.displayBoard(game.getStringBoard());
+                view.announceDraw();
+                play = false;
             }
+            
+            moveCount++;
         }
     }
 

@@ -15,6 +15,7 @@ public class Menu {
     }
 
     public void askWhatToPlay() {
+        listAvailableGames();
         view.aksGame();
 
         int choice = scanner.nextInt();
@@ -61,5 +62,12 @@ public class Menu {
         // Custom logic to determine player state (e.g., X or O) based on game rules
         // Example: Alternating between X and O
         return playerName.equals("Player 1") ? State.X : State.O;
+    }
+
+    public void listAvailableGames() {
+        System.out.println("Available games:");
+        System.out.println("1. Tic Tac Toe");
+        System.out.println("2. Connect 4");
+        System.out.println("3. Gomoku");
     }
 }
