@@ -1,7 +1,6 @@
 package model;
 
 import view.DisplayBoard;
-import view.View;
 
 public abstract class BoardGame {
     private int nbLine;
@@ -11,7 +10,6 @@ public abstract class BoardGame {
     private Player player2;
     private DisplayBoard displayBoard;
     private int align;
-    private View view;
 
     public void setNbLine(int nbLine) {
         this.nbLine = nbLine;
@@ -30,7 +28,6 @@ public abstract class BoardGame {
     }
 
     public void initBoard(int row, int col, int align) {
-        this.view = new View();
         setNbCol(col);
         setNbLine(row);
         setAlign(align);
@@ -53,58 +50,7 @@ public abstract class BoardGame {
         board[positionPlayer[0]][positionPlayer[1]].setState(player.getState());
     }
     //TODO remonter ds controller
-    public void play() {
-        boolean play = true;
 
-        while (play) {
-            displayBoard.display(board);
-
-            for (int i = 0; i < (nbLine * nbCol); i++) {
-                Player currentPlayer = (i % 2 == 0) ? player1 : player2;
-
-                int[] move = currentPlayer.makeMove(board);
-
-                setOwner(move, currentPlayer);
-
-                if (isOver(currentPlayer)) {
-                    play = false;
-                    displayBoard.display(board);
-                    break;
-                }
-
-                displayBoard.display(board);
-            }
-        }
-        view.gameOver();
-    }
-
-
-    //Solution formateur
-    /*public boolean isOver() {
-        State currentState = currentPlayer.getState();
-
-        for (int i = 0; i < sizeLine; i++) {
-            for(int j = 0; j < sizeColumn; j++) {
-                if (checkDirection(i, j, 0, 1,currentState)
-                    || checkDirection(i, j, 1, 0,currentState)
-                    || checkDirection(i, j, 1, 1,currentState)
-                    || checkDirection(i, j, 1, -1,currentState)) return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkDirection(int i, int j, int u, int v, State currentState){
-        for (int k = 0; k < nbIdenticalCell; k++) {
-            if (!exist(i+u*k, j + v*k)){
-                return false;
-            }
-            if (board[i+u*k][j + v*k].getState() != currentState) {
-                return false;
-            }
-        }
-        return true;
-    }*/
     //Conditions de victoire
     public boolean isOver(Player player) {
         for (int i = 0; i < nbLine; i++) {
@@ -180,4 +126,24 @@ public abstract class BoardGame {
         return false;
     }
 
+    // Ajoutons quelques getters utiles pour le controller
+    public int getNbLine() {
+        return nbLine;
+    }
+
+    public int getNbCol() {
+        return nbCol;
+    }
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public Cell[][] getBoard() {
+        return board;
+    }
 }

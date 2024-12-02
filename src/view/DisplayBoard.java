@@ -10,7 +10,7 @@ public class DisplayBoard {
     public DisplayBoard(int nbRows, int nbCols) {
         this.nbRow = nbRows;
         this.nbCol = nbCols;
-        this.view = new View();
+        this.view = new ConsoleView();
     }
 
     public void display(Cell[][] board) {

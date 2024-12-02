@@ -1,8 +1,8 @@
 package model;
 
-import view.View;
-
 import java.util.Scanner;
+import view.ConsoleView;
+import view.View;
 
 
 
@@ -18,7 +18,7 @@ public class HumanPlayer extends Player {
 
     @Override
     public int[] makeMove(Cell[][] board) {
-        View view = new View();
+        View view = new ConsoleView();
         Scanner userInput = new Scanner(System.in);
 
         int[] positionPlayer = new int[2];

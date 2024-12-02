@@ -1,10 +1,9 @@
 package controller;
 
-import model.*;
-import model.State;
-import view.View;
-
 import java.util.Scanner;
+import model.*;
+import view.ConsoleView;
+import view.View;
 
 public class Menu {
     private final Scanner scanner;
@@ -12,7 +11,7 @@ public class Menu {
 
     public Menu() {
         this.scanner = new Scanner(System.in);
-        this.view = new View();
+        this.view = new ConsoleView();
     }
 
     public void askWhatToPlay() {
@@ -41,7 +40,9 @@ public class Menu {
         Player player2 = createPlayer("Player 2");
 
         game.initPlayers(player1, player2);
-        game.play();
+        
+        GameController gameController = new GameController(game, view);
+        gameController.play();
     }
 
     private Player createPlayer(String playerName) {
